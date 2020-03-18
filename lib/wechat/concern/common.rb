@@ -214,6 +214,16 @@ module Wechat
         post 'media/voice/translatecontent', from_content, params: { lfrom: lfrom, lto: lto }
       end
 
+      def jscode2session(code)
+        params = {
+          appid: access_token.appid,
+          secret: access_token.secret,
+          js_code: code,
+          grant_type: 'authorization_code'
+        }
+        client.get 'jscode2session', params: params, base: Wechat::Api::OAUTH2_BASE
+      end
+
       def web_access_token(code)
         params = {
           appid: access_token.appid,
