@@ -214,10 +214,10 @@ module Wechat
         post 'media/voice/translatecontent', from_content, params: { lfrom: lfrom, lto: lto }
       end
 
-      def jscode2session(code)
+      def jscode2session(code, appid, secret)
         params = {
-          appid: access_token.appid,
-          secret: access_token.secret,
+          appid: appid,
+          secret: secret,
           js_code: code,
           grant_type: 'authorization_code'
         }
